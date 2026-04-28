@@ -1,0 +1,40 @@
+---
+const amenidades = [
+  { icon: '🏊', nombre: 'Alberca privada', desc: 'Sumérgete en nuestra alberca con vista al jardín' },
+  { icon: '⛵', nombre: 'Acceso al lago', desc: 'A pasos del lago de Tequesquitengo' },
+  { icon: '🔥', nombre: 'Área de asador (BBQ)', desc: 'Parrilla y área exterior para reuniones' },
+  { icon: '📶', nombre: 'WiFi de alta velocidad', desc: 'Conectividad en toda la propiedad' },
+  { icon: '❄️', nombre: 'Aire acondicionado', desc: 'En todas las habitaciones' },
+  { icon: '🍳', nombre: 'Cocina equipada', desc: 'Estufa, refrigerador, utensilios y más' },
+  { icon: '🅿️', nombre: 'Estacionamiento', desc: 'Espacio para [X] vehículos dentro de la propiedad' },
+  { icon: '📺', nombre: 'Smart TV', desc: 'Con Netflix, YouTube y más' },
+  { icon: '🛶', nombre: 'Kayaks / Tabla', desc: 'Equipo acuático disponible para huéspedes' },
+  { icon: '🌳', nombre: 'Jardín y terraza', desc: 'Espacios verdes para relajarse al aire libre' },
+  { icon: '🧺', nombre: 'Lavadora y secadora', desc: 'Para estadías más largas' },
+  { icon: '🐾', nombre: 'Pet friendly', desc: 'Mascotas bienvenidas (consultar condiciones)' },
+];
+---
+
+<section id="amenidades" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-14">
+      <p class="text-teal-600 font-semibold tracking-widest text-sm uppercase mb-3">Todo lo que necesitas</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900" style="font-family: 'Playfair Display', serif;">
+        Amenidades
+      </h2>
+      <p class="mt-4 text-gray-500 text-lg max-w-xl mx-auto">
+        Pensamos en cada detalle para que tu estancia sea perfecta.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+      {amenidades.map((a) => (
+        <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-gray-50 hover:bg-teal-50 hover:shadow-md transition-all duration-200 group">
+          <span class="text-4xl mb-3 group-hover:scale-110 transition-transform duration-200">{a.icon}</span>
+          <h3 class="font-semibold text-gray-800 mb-1">{a.nombre}</h3>
+          <p class="text-sm text-gray-500 leading-snug">{a.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

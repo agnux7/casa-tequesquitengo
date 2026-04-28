@@ -1,0 +1,77 @@
+---
+const preguntas = [
+  {
+    q: '¿Cuál es el horario de check-in y check-out?',
+    a: 'El check-in es a partir de las 3:00 pm y el check-out es a las 12:00 pm. Si necesitas horarios especiales, podemos coordinarlo según disponibilidad.',
+  },
+  {
+    q: '¿Cuántas personas puede alojar la casa?',
+    a: 'La casa tiene capacidad para hasta 10 personas. Cuenta con 3 habitaciones: [descripción de camas]. Ideal para familias o grupos de amigos.',
+  },
+  {
+    q: '¿Se aceptan mascotas?',
+    a: 'Sí, somos pet friendly. Aceptamos mascotas pequeñas y medianas con previo aviso. Por favor infórmanos al hacer tu reserva.',
+  },
+  {
+    q: '¿Cuánto cuesta el estacionamiento?',
+    a: 'El estacionamiento es gratuito e incluido en la renta. Hay espacio para hasta [X] vehículos dentro de la propiedad.',
+  },
+  {
+    q: '¿La casa tiene acceso directo al lago?',
+    a: 'Sí, la propiedad cuenta con acceso al lago de Tequesquitengo a pocos metros. Puedes hacer actividades acuáticas o simplemente disfrutar de la vista.',
+  },
+  {
+    q: '¿Se pueden organizar eventos o fiestas?',
+    a: 'La casa es ideal para reuniones familiares y grupos de amigos. Para eventos con música o más de 15 personas, consultar condiciones especiales.',
+  },
+  {
+    q: '¿Está incluida la ropa de cama y toallas?',
+    a: 'Sí, la renta incluye ropa de cama, almohadas y toallas de baño para todos los huéspedes. También hay toallas para alberca.',
+  },
+  {
+    q: '¿Cómo se realiza la reserva y el pago?',
+    a: 'Puedes reservar directamente por Airbnb o contactarnos por WhatsApp para reservas directas. Aceptamos transferencia bancaria y tarjeta de crédito.',
+  },
+];
+
+// Schema FAQ para SEO
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: preguntas.map((p) => ({
+    '@type': 'Question',
+    name: p.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: p.a,
+    },
+  })),
+};
+---
+
+<section id="faq" class="py-20 bg-gray-50">
+  <div class="max-w-3xl mx-auto px-4">
+    <div class="text-center mb-14">
+      <p class="text-teal-600 font-semibold tracking-widest text-sm uppercase mb-3">¿Tienes dudas?</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900" style="font-family: 'Playfair Display', serif;">
+        Preguntas frecuentes
+      </h2>
+    </div>
+
+    <div class="space-y-4">
+      {preguntas.map((p) => (
+        <details class="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-semibold text-gray-800 hover:text-teal-700 transition-colors">
+            <span>{p.q}</span>
+            <span class="text-teal-500 group-open:rotate-45 transition-transform duration-200 text-2xl leading-none flex-shrink-0 ml-4">+</span>
+          </summary>
+          <div class="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-50">
+            <p class="pt-4">{p.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

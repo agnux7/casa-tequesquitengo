@@ -1,0 +1,55 @@
+---
+const airbnbUrl = 'https://airbnb.com/rooms/TU_ID_AQUI';
+const whatsappNumber = '521XXXXXXXXXX'; // Formato internacional sin +
+const whatsappMessage = encodeURIComponent('Hola, me interesa rentar la casa en Tequesquitengo. ¿Me pueden dar más información?');
+---
+
+<section id="contacto" class="py-24 bg-teal-800 text-white">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+
+    <p class="text-teal-300 font-semibold tracking-widest text-sm uppercase mb-4">¿Listo para tu escapada?</p>
+    <h2 class="text-4xl md:text-6xl font-bold mb-6 leading-tight" style="font-family: 'Playfair Display', serif;">
+      Reserva tu estancia<br />en Tequesquitengo
+    </h2>
+    <p class="text-teal-200 text-xl mb-10 max-w-xl mx-auto">
+      Consulta disponibilidad en Airbnb o escríbenos directamente por WhatsApp.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-5 justify-center">
+      <a
+        href={airbnbUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-amber-400 hover:bg-amber-300 text-gray-900 font-bold px-10 py-5 rounded-full text-lg transition-all duration-200 shadow-xl hover:-translate-y-0.5"
+      >
+        🏠 Ver en Airbnb
+      </a>
+      <a
+        href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-green-500 hover:bg-green-400 text-white font-bold px-10 py-5 rounded-full text-lg transition-all duration-200 shadow-xl hover:-translate-y-0.5"
+      >
+        💬 WhatsApp
+      </a>
+    </div>
+
+    <p class="mt-8 text-teal-400 text-sm">
+      Respuesta en menos de 2 horas · Reservas directas con descuento especial
+    </p>
+
+  </div>
+</section>
+
+<!-- Footer mínimo -->
+<footer class="bg-gray-900 text-gray-500 py-8 text-center text-sm">
+  <div class="max-w-4xl mx-auto px-4">
+    <p class="mb-2 font-medium text-gray-400">Casa [Nombre] · Tequesquitengo, Morelos, México</p>
+    <p>
+      <a href={airbnbUrl} target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Airbnb</a>
+      {' · '}
+      <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">WhatsApp</a>
+    </p>
+    <p class="mt-4 text-xs text-gray-600">© {new Date().getFullYear()} Casa Tequesquitengo. Todos los derechos reservados.</p>
+  </div>
+</footer>

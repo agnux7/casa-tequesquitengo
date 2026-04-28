@@ -1,0 +1,72 @@
+---
+// Pegar aquí las reseñas reales copiadas de Airbnb
+const resenas = [
+  {
+    nombre: 'María G.',
+    origen: 'Ciudad de México',
+    calificacion: 5,
+    fecha: 'Marzo 2024',
+    texto: '"Pasamos un fin de semana increíble. La casa es exactamente como en las fotos, muy limpia y con todo lo necesario. La alberca es hermosa y el acceso al lago es genial. ¡Definitivamente regresamos!"',
+    avatar: 'M',
+  },
+  {
+    nombre: 'Carlos R.',
+    origen: 'Guadalajara',
+    calificacion: 5,
+    fecha: 'Enero 2024',
+    texto: '"Perfecta para grupos. Fuimos 8 amigos y todos quedaron encantados. El asador es excelente y la ubicación no puede ser mejor. El anfitrión muy atento y respondió todas nuestras preguntas."',
+    avatar: 'C',
+  },
+  {
+    nombre: 'Laura M.',
+    origen: 'Querétaro',
+    calificacion: 5,
+    fecha: 'Diciembre 2023',
+    texto: '"La mejor opción en Tequesquitengo. Llevamos a los niños y se la pasaron increíble en la alberca. La cocina está muy bien equipada, pudimos cocinar sin problema. 100% recomendada."',
+    avatar: 'L',
+  },
+];
+
+const colors = ['bg-teal-500', 'bg-amber-500', 'bg-emerald-500'];
+---
+
+<section id="resenas" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-14">
+      <p class="text-teal-600 font-semibold tracking-widest text-sm uppercase mb-3">Lo que dicen nuestros huéspedes</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900" style="font-family: 'Playfair Display', serif;">
+        Reseñas
+      </h2>
+      <div class="flex items-center justify-center gap-2 mt-4">
+        <div class="flex">
+          {Array(5).fill(0).map(() => (
+            <span class="text-amber-400 text-2xl">★</span>
+          ))}
+        </div>
+        <span class="text-gray-600 font-medium">5.0 · Airbnb</span>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {resenas.map((r, i) => (
+        <div class="bg-gray-50 rounded-2xl p-7 hover:shadow-lg transition-shadow duration-200">
+          <div class="flex items-center gap-4 mb-5">
+            <div class={`w-12 h-12 ${colors[i]} rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0`}>
+              {r.avatar}
+            </div>
+            <div>
+              <p class="font-semibold text-gray-800">{r.nombre}</p>
+              <p class="text-sm text-gray-500">{r.origen} · {r.fecha}</p>
+            </div>
+          </div>
+          <div class="flex mb-3">
+            {Array(r.calificacion).fill(0).map(() => (
+              <span class="text-amber-400">★</span>
+            ))}
+          </div>
+          <p class="text-gray-600 leading-relaxed italic">{r.texto}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

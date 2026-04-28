@@ -1,0 +1,97 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = 'Casa de Fin de Semana en Tequesquitengo, Morelos | Con Alberca y Lago',
+  description = 'Renta nuestra hermosa casa de fin de semana en Tequesquitengo, Morelos. Disfruta alberca, acceso al lago, BBQ y todas las amenidades para una estancia perfecta. ¡Reserva ahora!',
+  image = '/images/hero.jpg',
+} = Astro.props;
+
+const siteUrl = 'https://casatequesquitengo.com';
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': ['LodgingBusiness', 'House'],
+  name: 'Casa Tequesquitengo',
+  description,
+  url: siteUrl,
+  image: `${siteUrl}${image}`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Tequesquitengo',
+    addressLocality: 'Tequesquitengo',
+    addressRegion: 'Morelos',
+    addressCountry: 'MX',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: '18.6578',
+    longitude: '-99.2319',
+  },
+  amenityFeature: [
+    { '@type': 'LocationFeatureSpecification', name: 'Alberca privada', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Acceso al lago', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'WiFi', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'BBQ / Área de asador', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Estacionamiento', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Cocina equipada', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Aire acondicionado', value: true },
+  ],
+  numberOfRooms: 3,
+  priceRange: '$$',
+  telephone: '+52-XXXXXXXXXX',
+  touristType: ['Familias', 'Parejas', 'Grupos de amigos'],
+};
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}${image}`} />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:site_name" content="Casa Tequesquitengo" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}${image}`} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body class="bg-white text-gray-800 antialiased">
+    <slot />
+  </body>
+</html>

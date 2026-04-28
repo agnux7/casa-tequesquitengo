@@ -1,0 +1,59 @@
+---
+const airbnbUrl = 'https://airbnb.com/rooms/TU_ID_AQUI';
+const links = [
+  { href: '#amenidades', label: 'Amenidades' },
+  { href: '#galeria', label: 'Galería' },
+  { href: '#ubicacion', label: 'Ubicación' },
+  { href: '#faq', label: 'FAQ' },
+];
+---
+
+<nav
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  id="navbar"
+>
+  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <!-- Logo/Nombre -->
+    <a href="#" class="text-white font-bold text-lg" style="font-family: 'Playfair Display', serif;">
+      Casa <span class="text-amber-300">Tequesquitengo</span>
+    </a>
+
+    <!-- Links (desktop) -->
+    <div class="hidden md:flex items-center gap-8">
+      {links.map((l) => (
+        <a href={l.href} class="text-white/80 hover:text-white text-sm font-medium transition-colors">
+          {l.label}
+        </a>
+      ))}
+      <a
+        href={airbnbUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-amber-400 hover:bg-amber-300 text-gray-900 font-bold px-5 py-2 rounded-full text-sm transition-all duration-200"
+      >
+        Reservar
+      </a>
+    </div>
+
+    <!-- Mobile CTA -->
+    <a
+      href={airbnbUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="md:hidden bg-amber-400 hover:bg-amber-300 text-gray-900 font-bold px-4 py-2 rounded-full text-sm"
+    >
+      Reservar
+    </a>
+  </div>
+</nav>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      navbar?.classList.add('bg-teal-900/95', 'backdrop-blur-sm', 'shadow-lg');
+    } else {
+      navbar?.classList.remove('bg-teal-900/95', 'backdrop-blur-sm', 'shadow-lg');
+    }
+  });
+</script>
