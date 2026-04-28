@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Hero from '../components/Hero.astro';
+import HeroAnimado from '../components/HeroAnimado';
 import Highlights from '../components/Highlights.astro';
 import Amenidades from '../components/Amenidades.astro';
 import Galeria from '../components/Galeria.astro';
@@ -13,9 +12,8 @@ import ContactoCTA from '../components/ContactoCTA.astro';
 ---
 
 <Layout>
-  <Navbar />
   <main>
-    <Hero />
+    <HeroAnimado client:load />
     <Highlights />
     <Amenidades />
     <Galeria />
